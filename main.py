@@ -3,8 +3,10 @@ from datetime import datetime
 import time
 import smtplib
 
-MYEMAIL = "susanguo0@gmail.com"
-MYPASSWORD = "selosnoc8792"
+
+MYEMAIL = "***@gmail.com"
+MYPASSWORD = "*********"
+
 MYLAT = 37.55
 MYLNG = -121.98
 MSG = "Subject:Look up! \n\nISS is visible in your area.\n" + str(datetime.now())
@@ -52,13 +54,13 @@ def send_email():
     connection.close()
 
 
-# run the code every 60 seconds. |
+# run the code every 5 seconds. |
 while True:
     is_iss_overhead()
     time.sleep(5)
     # send_email()
 
-# while the ISS.is.close to my current position, and it is currently dark
+# if the ISS.is.close to my current position, and it is currently dark
     if is_night() and is_iss_overhead():
         send_email()
 
