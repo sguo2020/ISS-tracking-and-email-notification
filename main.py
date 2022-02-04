@@ -3,11 +3,10 @@ from datetime import datetime
 import time
 import smtplib
 
-MYEMAIL = "bisusanguo0@gmail.com"
-MYPASSWORD = "datcyvbonca3"
+MYEMAIL = "susanguo0@gmail.com"
+MYPASSWORD = "selosnoc8792"
 MYLAT = 37.55
 MYLNG = -121.98
-TOEMAIL = "sguo@comcast.net"
 MSG = "Subject:Look up! \n\nISS is visible in your area.\n" + str(datetime.now())
 
 parameters = {
@@ -45,7 +44,8 @@ def is_night():
 
 
 def send_email():
-    connection = smtplib.SMTP("smtp.gmail.com")
+    # connection = smtplib.SMTP("smtp.gmail.com")
+    connection = smtplib.SMTP("smtp.gmail.com", port=587)
     connection.starttls()
     connection.login(user=MYEMAIL, password=MYPASSWORD)
     connection.sendmail(from_addr=MYEMAIL, to_addrs=MYEMAIL, msg=MSG)
@@ -56,6 +56,7 @@ def send_email():
 while True:
     is_iss_overhead()
     time.sleep(5)
+    # send_email()
 
 # while the ISS.is.close to my current position, and it is currently dark
     if is_night() and is_iss_overhead():
